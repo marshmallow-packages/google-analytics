@@ -1,0 +1,36 @@
+{
+    "name": "marshmallow/google-analytics",
+    "description": "Send request to you Google Analytics has never been easier.",
+    "keywords": ["marshmallow"],
+    "homepage": "https://github.com/Marshmallow-Development/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stef",
+            "email": "stef@marshmallow.dev",
+            "homepage": "https://marshmallow.dev",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "stef@marshmallow.dev"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {"Marshmallow\\GoogleAnalytics\\": "src"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Marshmallow\\GoogleAnalytics\\": "src"}
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Marshmallow\\GoogleAnalytics\\ServiceProvider"
+            ]
+        }
+    }
+}
