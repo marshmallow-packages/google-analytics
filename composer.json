@@ -1,6 +1,6 @@
 {
     "name": "marshmallow/google-analytics",
-    "description": "Send request to you Google Analytics has never been easier.",
+    "description": "Sending request to you Google Analytics has never been easier. With support for e-commerce tracking.",
     "keywords": ["marshmallow"],
     "homepage": "https://github.com/Marshmallow-Development/",
     "type": "library",
