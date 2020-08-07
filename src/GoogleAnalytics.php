@@ -3,6 +3,7 @@
 namespace Marshmallow\GoogleAnalytics;
 
 use Marshmallow\GoogleAnalytics\Types\Event;
+use Marshmallow\HelperFunctions\Facades\Str;
 use Marshmallow\GoogleAnalytics\Types\ItemHit;
 use Marshmallow\GoogleAnalytics\Types\Pageview;
 use Marshmallow\GoogleAnalytics\GoogleAnalyticsRequest;
@@ -47,9 +48,36 @@ class GoogleAnalytics
      */
     public function anonymousClientId($anonymousClientId = null)
     {
-        $anonymousClientId = 'd8442e8d-47ff-4165-8b40-0ce9434c3283';
+        /**
+         * If there is no client id provided, we will try to get
+         * it from the Google Analytics cookie.
+         */
+        if (!$anonymousClientId) {
+            $anonymousClientId = self::getClientIdFromCookies();
+        }
+
+        /**
+         * If there is no id provided and no cookie available,
+         * we generate a uuid as client id.
+         */
+        if (!$anonymousClientId) {
+            $anonymousClientId = Str::uuid();
+        }
+
         $this->anonymousClientId = $anonymousClientId;
         return $this;
+    }
+
+    public static function getClientIdFromCookies()
+    {
+        if (!isset($_COOKIE) || !isset($_COOKIE['_ga'])) {
+            return null;
+        }
+        if ($client_id = preg_replace("/^.+\.(.+?\..+?)$/", "\\1", $_COOKIE['_ga'])) {
+            return $client_id;
+        }
+
+        return null;
     }
 
     public function getAnonymousClientId()
