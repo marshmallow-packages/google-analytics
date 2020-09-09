@@ -1,6 +1,6 @@
 <?php
 
-namespace Marshmallow\GoogleAnalytics;
+namespace Marshmallow\GoogleAnalytics\Exceptions;
 
 class EventDataException
 {

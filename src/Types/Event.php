@@ -2,8 +2,8 @@
 
 namespace Marshmallow\GoogleAnalytics\Types;
 
-use Marshmallow\GoogleAnalytics\EventDataException;
 use Marshmallow\GoogleAnalytics\Contracts\GoogleAnalyticsType;
+use Marshmallow\GoogleAnalytics\Exceptions\EventDataException;
 
 class Event implements GoogleAnalyticsType
 {

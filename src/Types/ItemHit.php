@@ -2,10 +2,10 @@
 
 namespace Marshmallow\GoogleAnalytics\Types;
 
-use Marshmallow\GoogleAnalytics\EventDataException;
 use Marshmallow\GoogleAnalytics\Types\Traits\Currency;
 use Marshmallow\GoogleAnalytics\Types\Traits\TransaciontId;
 use Marshmallow\GoogleAnalytics\Contracts\GoogleAnalyticsType;
+use Marshmallow\GoogleAnalytics\Exceptions\EventDataException;
 
 class ItemHit implements GoogleAnalyticsType
 {
