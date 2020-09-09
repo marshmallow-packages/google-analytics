@@ -72,6 +72,14 @@ class OrderCreated implements GoogleAnalyticsEvent
 }
 ```
 
+### Register the Listener
+Add the `GoogleEcommerceTrigger` listner to your `EventServiceProvider.php`.
+```php
+OrderCreated::class => [
+    GoogleEcommerceTrigger::class
+]
+```
+
 ### Concatunate types
 You can add as many types as you want. To stay with the example above, lets say you want to let Google Analytics now which products where sold with this order.
 ```php
