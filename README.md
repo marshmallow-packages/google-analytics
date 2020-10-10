@@ -1,31 +1,20 @@
-<p align="center">
-    <img src="https://cdn.marshmallow-office.com/media/images/logo/marshmallow.transparent.red.png">
-</p>
-<p align="center">
-    <a href="https://github.com/Marshmallow-Development">
-        <img src="https://img.shields.io/github/issues/Marshmallow-Development/package-helper-functions.svg" alt="Issues">
-    </a>
-    <a href="https://github.com/Marshmallow-Development">
-        <img src="https://img.shields.io/github/forks/Marshmallow-Development/package-helpers-functions.svg" alt="Forks">
-    </a>
-    <a href="https://github.com/Marshmallow-Development">
-        <img src="https://img.shields.io/github/stars/Marshmallow-Development/package-helpers-functions.svg" alt="Stars">
-    </a>
-    <a href="https://github.com/Marshmallow-Development">
-        <img src="https://img.shields.io/github/license/Marshmallow-Development/package-helpers-functions.svg" alt="License">
-    </a>
-</p>
+![alt text](https://marshmallow.dev/cdn/media/logo-red-237x46.png "marshmallow.")
 
 # Laravel Google Analytics Package
+[![Version](https://img.shields.io/packagist/v/marshmallow/google-analytics)](https://github.com/marshmallow-packages/google-analytics)
+[![Issues](https://img.shields.io/github/issues/marshmallow-packages/google-analytics)](https://github.com/marshmallow-packages/google-analytics)
+[![Licence](https://img.shields.io/github/license/marshmallow-packages/google-analytics)](https://github.com/marshmallow-packages/google-analytics)
+![PHP Syntax Checker](https://github.com/marshmallow-packages/google-analytics/workflows/PHP%20Syntax%20Checker/badge.svg)
+
 Send request to you Google Analytics has never been easier.
 
-### Installing
-```
+## Installation
+You can install the package via composer:
+``` bash
 composer require marshmallow/google-analytics
 ```
 
-# Usage
-
+## Usage
 ## Use with an event listener
 The easiest way to use this package is to use Events and Listners. For instance. If you want to use the ecommerce tracking your should create an event like `OrderCreated`. This event should implement `GoogleAnalyticsEvent`. This will require you to implement the `withAnalytics` method.
 ```php
@@ -184,3 +173,19 @@ $pageview = (new Pageview)
          */
         sendToGoogle();
 ```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+## Security
+
+If you discover any security related issues, please email stef@marshmallow.dev instead of using the issue tracker.
+
+## Credits
+
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
