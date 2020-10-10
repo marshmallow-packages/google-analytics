@@ -2,20 +2,22 @@
 
 namespace Marshmallow\GoogleAnalytics;
 
+use Marshmallow\GoogleAnalytics\Types\EcommerceTracking;
 use Marshmallow\GoogleAnalytics\Types\Event;
-use Marshmallow\HelperFunctions\Facades\Str;
 use Marshmallow\GoogleAnalytics\Types\ItemHit;
 use Marshmallow\GoogleAnalytics\Types\Pageview;
-use Marshmallow\GoogleAnalytics\GoogleAnalyticsRequest;
-use Marshmallow\GoogleAnalytics\Types\EcommerceTracking;
+use Marshmallow\HelperFunctions\Facades\Str;
 
 class GoogleAnalytics
 {
     protected $params = [];
+
     protected $requests = [];
 
     protected $version;
+
     protected $trackingId;
+
     protected $anonymousClientId;
 
     protected $path = 'https://www.google-analytics.com/collect';
@@ -23,6 +25,7 @@ class GoogleAnalytics
     public function version($version)
     {
         $this->version = $version;
+
         return $this;
     }
 
@@ -34,6 +37,7 @@ class GoogleAnalytics
     public function trackingId($trackingId)
     {
         $this->trackingId = $trackingId;
+
         return $this;
     }
 
@@ -52,7 +56,7 @@ class GoogleAnalytics
          * If there is no client id provided, we will try to get
          * it from the Google Analytics cookie.
          */
-        if (!$anonymousClientId) {
+        if (! $anonymousClientId) {
             $anonymousClientId = self::getClientIdFromCookies();
         }
 
@@ -60,17 +64,18 @@ class GoogleAnalytics
          * If there is no id provided and no cookie available,
          * we generate a uuid as client id.
          */
-        if (!$anonymousClientId) {
+        if (! $anonymousClientId) {
             $anonymousClientId = Str::uuid();
         }
 
         $this->anonymousClientId = $anonymousClientId;
+
         return $this;
     }
 
     public static function getClientIdFromCookies()
     {
-        if (!isset($_COOKIE) || !isset($_COOKIE['_ga'])) {
+        if (! isset($_COOKIE) || ! isset($_COOKIE['_ga'])) {
             return null;
         }
         if ($client_id = preg_replace("/^.+\.(.+?\..+?)$/", "\\1", $_COOKIE['_ga'])) {
@@ -165,8 +170,8 @@ class GoogleAnalytics
                 CURLOPT_CUSTOMREQUEST => 'POST',
                 CURLOPT_POSTFIELDS => $request->getCurlPostFields(),
                 CURLOPT_HTTPHEADER => [
-                    "Content-Type: application/x-www-form-urlencoded"
-                ]
+                    "Content-Type: application/x-www-form-urlencoded",
+                ],
             ]);
 
             curl_exec($curl);
@@ -174,6 +179,7 @@ class GoogleAnalytics
 
             unset($this->requests[$key]);
         }
+
         return $this;
     }
 
@@ -184,6 +190,7 @@ class GoogleAnalytics
             $request->addParameter($key, $value);
         }
         $this->requests[] = $request;
+
         return $this;
     }
 }

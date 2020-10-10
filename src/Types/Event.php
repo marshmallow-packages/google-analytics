@@ -8,13 +8,17 @@ use Marshmallow\GoogleAnalytics\Exceptions\EventDataException;
 class Event implements GoogleAnalyticsType
 {
     protected $label;
+
     protected $value;
+
     protected $action;
+
     protected $category;
 
     public function category($category)
     {
         $this->category = $category;
+
         return $this;
     }
 
@@ -26,6 +30,7 @@ class Event implements GoogleAnalyticsType
     public function action($action)
     {
         $this->action = $action;
+
         return $this;
     }
 
@@ -37,6 +42,7 @@ class Event implements GoogleAnalyticsType
     public function label($label)
     {
         $this->label = $label;
+
         return $this;
     }
 
@@ -48,6 +54,7 @@ class Event implements GoogleAnalyticsType
     public function value($value)
     {
         $this->value = $value;
+
         return $this;
     }
 
@@ -58,10 +65,10 @@ class Event implements GoogleAnalyticsType
 
     public function validate(): void
     {
-        if (!$this->getCategory()) {
+        if (! $this->getCategory()) {
             throw new EventDataException('Please provide a category to your event. This is mandatory by Google.');
         }
-        if (!$this->getAction()) {
+        if (! $this->getAction()) {
             throw new EventDataException('Please provide an action to your event. This is mandatory by Google.');
         }
     }

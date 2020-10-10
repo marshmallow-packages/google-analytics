@@ -9,6 +9,7 @@ trait Currency
     public function currency($currency)
     {
         $this->currency = $currency;
+
         return $this;
     }
 

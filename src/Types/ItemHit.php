@@ -2,10 +2,10 @@
 
 namespace Marshmallow\GoogleAnalytics\Types;
 
-use Marshmallow\GoogleAnalytics\Types\Traits\Currency;
-use Marshmallow\GoogleAnalytics\Types\Traits\TransaciontId;
 use Marshmallow\GoogleAnalytics\Contracts\GoogleAnalyticsType;
 use Marshmallow\GoogleAnalytics\Exceptions\EventDataException;
+use Marshmallow\GoogleAnalytics\Types\Traits\Currency;
+use Marshmallow\GoogleAnalytics\Types\Traits\TransaciontId;
 
 class ItemHit implements GoogleAnalyticsType
 {
@@ -13,14 +13,19 @@ class ItemHit implements GoogleAnalyticsType
     use TransaciontId;
 
     protected $name;
+
     protected $code;
+
     protected $price;
+
     protected $quantity;
+
     protected $variation;
 
     public function name($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -32,6 +37,7 @@ class ItemHit implements GoogleAnalyticsType
     public function price($price)
     {
         $this->price = $price;
+
         return $this;
     }
 
@@ -43,6 +49,7 @@ class ItemHit implements GoogleAnalyticsType
     public function quantity($quantity)
     {
         $this->quantity = $quantity;
+
         return $this;
     }
 
@@ -54,6 +61,7 @@ class ItemHit implements GoogleAnalyticsType
     public function code($code)
     {
         $this->code = $code;
+
         return $this;
     }
 
@@ -65,6 +73,7 @@ class ItemHit implements GoogleAnalyticsType
     public function variation($variation)
     {
         $this->variation = $variation;
+
         return $this;
     }
 
@@ -75,11 +84,11 @@ class ItemHit implements GoogleAnalyticsType
 
     public function validate(): void
     {
-        if (!$this->getId()) {
+        if (! $this->getId()) {
             throw new EventDataException('Please provide a transaction id to your item hit. This is mandatory by Google.');
         }
 
-        if (!$this->getName()) {
+        if (! $this->getName()) {
             throw new EventDataException('Please provide a name to your item hit. This is mandatory by Google.');
         }
     }

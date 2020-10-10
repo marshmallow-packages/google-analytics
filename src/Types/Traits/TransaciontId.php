@@ -9,6 +9,7 @@ trait TransaciontId
     public function id($id)
     {
         $this->id = $id;
+
         return $this;
     }
 

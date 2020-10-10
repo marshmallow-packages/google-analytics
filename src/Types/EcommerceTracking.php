@@ -2,10 +2,10 @@
 
 namespace Marshmallow\GoogleAnalytics\Types;
 
-use Marshmallow\GoogleAnalytics\Types\Traits\Currency;
-use Marshmallow\GoogleAnalytics\Types\Traits\TransaciontId;
 use Marshmallow\GoogleAnalytics\Contracts\GoogleAnalyticsType;
 use Marshmallow\GoogleAnalytics\Exceptions\EventDataException;
+use Marshmallow\GoogleAnalytics\Types\Traits\Currency;
+use Marshmallow\GoogleAnalytics\Types\Traits\TransaciontId;
 
 class EcommerceTracking implements GoogleAnalyticsType
 {
@@ -13,13 +13,17 @@ class EcommerceTracking implements GoogleAnalyticsType
     use TransaciontId;
 
     protected $tax;
+
     protected $revenue;
+
     protected $shipping;
+
     protected $affiliation;
 
     public function affiliation($affiliation)
     {
         $this->affiliation = $affiliation;
+
         return $this;
     }
 
@@ -31,6 +35,7 @@ class EcommerceTracking implements GoogleAnalyticsType
     public function revenue($revenue)
     {
         $this->revenue = $revenue;
+
         return $this;
     }
 
@@ -42,6 +47,7 @@ class EcommerceTracking implements GoogleAnalyticsType
     public function shipping($shipping)
     {
         $this->shipping = $shipping;
+
         return $this;
     }
 
@@ -53,6 +59,7 @@ class EcommerceTracking implements GoogleAnalyticsType
     public function tax($tax)
     {
         $this->tax = $tax;
+
         return $this;
     }
 
@@ -63,7 +70,7 @@ class EcommerceTracking implements GoogleAnalyticsType
 
     public function validate(): void
     {
-        if (!$this->getId()) {
+        if (! $this->getId()) {
             throw new EventDataException('Please provide a transaction id to your ecommerce tracking. This is mandatory by Google.');
         }
     }

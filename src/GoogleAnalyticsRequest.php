@@ -11,6 +11,7 @@ class GoogleAnalyticsRequest
         if ($value) {
             $this->parameters[$key] = $value;
         }
+
         return $this;
     }
 

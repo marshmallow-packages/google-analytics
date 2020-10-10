@@ -7,12 +7,15 @@ use Marshmallow\GoogleAnalytics\Contracts\GoogleAnalyticsType;
 class Pageview implements GoogleAnalyticsType
 {
     protected $page;
+
     protected $title;
+
     protected $hostname;
 
     public function hostname($hostname)
     {
         $this->hostname = $hostname;
+
         return $this;
     }
 
@@ -24,6 +27,7 @@ class Pageview implements GoogleAnalyticsType
     public function page($page)
     {
         $this->page = $page;
+
         return $this;
     }
 
@@ -35,6 +39,7 @@ class Pageview implements GoogleAnalyticsType
     public function title($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
