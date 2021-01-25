@@ -2,6 +2,7 @@
 
 namespace Marshmallow\GoogleAnalytics\Listeners;
 
+use Exception;
 use Marshmallow\GoogleAnalytics\GoogleAnalytics;
 
 class GoogleEcommerceTrigger
@@ -24,6 +25,10 @@ class GoogleEcommerceTrigger
      */
     public function handle($event)
     {
+        if (! config('google-analytics.GA')) {
+            throw new Exception('No GA found in the google-analytics config.');
+        }
+
         $analytics = $event->withAnalytics(
             (new GoogleAnalytics())
 
@@ -37,7 +42,7 @@ class GoogleEcommerceTrigger
                  * Tracking is retreived from the same env variable
                  * that is used bij marshmallow/seoble package.
                  */
-                ->trackingId(env('SEO_GA'))
+                ->trackingId(config('google-analytics.GA'))
 
                 /**
                  * This will set a random GUID or the Google

@@ -13,7 +13,13 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        //
+        /**
+         * Merge in the config
+         */
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/google-analytics.php',
+            'google-analytics'
+        );
     }
 
     /**
@@ -23,6 +29,11 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        //
+        /**
+         * Config
+         */
+        $this->publishes([
+            __DIR__ . '/../config/google-analytics.php' => config_path('google-analytics.php'),
+        ]);
     }
 }
