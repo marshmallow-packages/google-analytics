@@ -1,7 +1,9 @@
 {
     "name": "marshmallow/google-analytics",
     "description": "Sending request to you Google Analytics has never been easier. With support for e-commerce tracking.",
-    "keywords": ["marshmallow"],
+    "keywords": [
+        "marshmallow"
+    ],
     "homepage": "https://github.com/Marshmallow-Development/",
     "type": "library",
     "license": "MIT",
@@ -18,14 +20,18 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0.0",
+        "php": "^7.0|^8.0",
         "marshmallow/helpers": "^2.0"
     },
     "autoload": {
-        "psr-4": {"Marshmallow\\GoogleAnalytics\\": "src"}
+        "psr-4": {
+            "Marshmallow\\GoogleAnalytics\\": "src"
+        }
     },
     "autoload-dev": {
-        "psr-4": {"Marshmallow\\GoogleAnalytics\\": "src"}
+        "psr-4": {
+            "Marshmallow\\GoogleAnalytics\\": "src"
+        }
     },
     "extra": {
         "laravel": {
