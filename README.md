@@ -14,6 +14,22 @@ You can install the package via composer:
 composer require marshmallow/google-analytics
 ```
 
+The service provider is registered automatically through Laravel package discovery.
+
+Optionally publish the config file:
+``` bash
+php artisan vendor:publish --provider="Marshmallow\GoogleAnalytics\ServiceProvider"
+```
+
+## Configuration
+The package ships with a single config option in `config/google-analytics.php`:
+
+| Key | Default | Description |
+| --- | --- | --- |
+| `GA` | `env('SEO_GA')` | The Google Analytics tracking ID requests are sent to. Defaults to the `SEO_GA` environment variable (shared with the `marshmallow/seoable` package). |
+
+When you use the event listener (see below) the tracking ID is read from this config value, so make sure `SEO_GA` is set in your `.env`.
+
 ## Usage
 ## Use with an event listener
 The easiest way to use this package is to use Events and Listners. For instance. If you want to use the ecommerce tracking your should create an event like `OrderCreated`. This event should implement `GoogleAnalyticsEvent`. This will require you to implement the `withAnalytics` method.
@@ -105,7 +121,7 @@ class OrderCreated implements GoogleAnalyticsEvent
 ## Google Event Types
 Below you find an overview of the different Google Types we currently support and how you can use them.
 
-### Event
+### Pageview
 ```php
 $pageview = (new Pageview)
             ->hostname('marshmallow.dev')
@@ -171,7 +187,7 @@ $pageview = (new Pageview)
         /**
          * Call the sendToGoogle method at the end
          */
-        sendToGoogle();
+        ->sendToGoogle();
 ```
 
 ## Changelog
@@ -184,6 +200,7 @@ If you discover any security related issues, please email stef@marshmallow.dev i
 
 ## Credits
 
+- [Stef](https://marshmallow.dev)
 - [All Contributors](../../contributors)
 
 ## License
